@@ -1,7 +1,7 @@
 from webob import Response
 import random
 
-from benderisms import quote
+from quotes import benderism
 
 class Bender(object):
     def __init__(self, app):
@@ -9,9 +9,9 @@ class Bender(object):
 
     def __call__(self, env, start_response):
         def _start_response(status, headers, exc_info=None):
-            benderism = quote[random.randrange(0,len(quote))]
-            headers = dict(headers).items()
-            headers.append(('X-Bender', benderism))
+            quote = benderism[random.randrange(0,len(benderism))]
+            #headers = dict(headers).items()
+            headers.append(('X-Bender', quote))
             return start_response(status, headers, exc_info)
         return self.app(env, _start_response)
 
