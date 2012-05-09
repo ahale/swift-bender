@@ -1,0 +1,5 @@
+... usual proxy-server.conf settings ...
+
+# Note: Put bender just in the pipeline
+[filter:bender]
+use = egg:swiftbender#middleware
